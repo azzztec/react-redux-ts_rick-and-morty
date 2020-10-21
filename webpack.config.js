@@ -27,22 +27,22 @@ module.exports = {
 
     module: {
         rules: [
-            // {
-            //     test: /\.(js|jsx)$/,
-            //     exclude: /node_modules/,
-            //     use: [
-            //         {
-            //             loader: "babel-loader",
-            //             options: {
-            //                 presets: [["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3, "targets": "defaults" }], "@babel/preset-react"]
-            //             }
-            //         }
-            //     ]
-            // },
             {
-                test: /\.(ts|tsx)$/,
-                loader: "ts-loader",
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: [["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3, "targets": "defaults" }], "@babel/preset-react"]
+                        }
+                    }
+                ]
             },
+            // {
+            //     test: /\.(ts|tsx)$/,
+            //     loader: "ts-loader",
+            // },
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
