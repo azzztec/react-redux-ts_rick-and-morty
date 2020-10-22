@@ -24,10 +24,10 @@ export default function Arrows(props) {
   return (
     <div className="arrows">
       <div className="arrows__inner">
-        <span onClick={handlePrevArrowClick} className="arrows__icon inactive" data-type="back">
+        <span onClick={handlePrevArrowClick} className="arrows__icon">
             <FontAwesomeIcon icon={faAngleLeft} size="4x" hello='SSSSS'/>
         </span>
-        <span onClick={handleNextArrowClick} className="arrows__icon" data-type="next">
+        <span onClick={handleNextArrowClick} className="arrows__icon">
             <FontAwesomeIcon icon={faAngleRight} size="4x"/>
         </span>
       </div>

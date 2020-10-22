@@ -1,6 +1,8 @@
+@import '../scss/vars.scss';
+
 .header {
     position: relative;
-    border-bottom: 4px solid #00b0c8;
+    border-bottom: 4px solid $base-color;
 
     &__inner {
         display: flex;
@@ -15,7 +17,7 @@
         text-transform: uppercase;
 
         &>.aqua {
-            color: #00b0c8;
+            color: $base-color;
         }
     }
 
@@ -46,11 +48,11 @@
         font-weight: 600;
 
         &:focus {
-            border: 1px solid #080808;
+            border: 1px solid $secondary-color;
         }
 
         &::placeholder {
-            color: #080808;
+            color: $secondary-color;
             font-size: 14px;
             letter-spacing: 2px;
             font-weight: 500;

@@ -1,5 +1,7 @@
+@import '../scss/vars.scss';
+
 .arrows {
-    color: #080808;
+    color: $secondary-color;
     display: flex;
     justify-content: center;
     margin-top: 25px;
@@ -13,20 +15,11 @@
     &__icon {
         cursor: pointer;
         :hover {
-            color: #838383;
+            color: $inactive-color;
         }
 
         :active {
             color: #575757;
-        }
-
-        &.inactive {
-            color: #838383;
-            cursor: unset;
-
-            :active {
-                color: #838383;
-            }
         }
     }
 
