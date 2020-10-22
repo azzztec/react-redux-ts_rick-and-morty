@@ -1,0 +1,59 @@
+.header {
+    position: relative;
+    border-bottom: 4px solid #00b0c8;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        min-height: 300px;
+        padding: 15px 15px;
+    }
+
+    &__title {
+        font-weight: 800;
+        font-size: 60px;
+        text-transform: uppercase;
+
+        &>.aqua {
+            color: #00b0c8;
+        }
+    }
+
+    &__subtitle {
+        font-size: 50px;
+        font-weight: 300;
+        flex-grow: 2;
+    }
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: -100;
+        background-size: cover;
+    }
+
+    &__input {
+        padding: 10px 10px;
+        width: 35%;
+        min-width: 224px;
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        font-weight: 600;
+
+        &:focus {
+            border: 1px solid #080808;
+        }
+
+        &::placeholder {
+            color: #080808;
+            font-size: 14px;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+    }
+}

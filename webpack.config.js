@@ -8,7 +8,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
     mode: 'development',
 
-    entry: './src/app/index.tsx',
+    entry: './src/index.js',
 
     resolve: {
         extensions: [ '.tsx', '.ts', '.js', '.jsx' ],
@@ -64,19 +64,12 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html",
+            template: "./public/index.html",
             minify: {
                 collapseWhitespace: true
             }
         }),
         new MiniCssExtractPlugin({ filename: '[name].[fullhash].css' }),
         new CleanWebpackPlugin(),
-        // new CssMinimizerPlugin()
     ],
-
-    // optimization: {
-    //     minimizer: [
-    //       new CssMinimizerPlugin(),
-    //     ]
-    // }
 };
