@@ -36,6 +36,11 @@
         overflow: hidden;
         z-index: -100;
         background-size: cover;
+        background: #000000;
+
+        &>img {
+            opacity: 0.77;
+        }
     }
 
     &__input {
