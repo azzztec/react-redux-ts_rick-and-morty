@@ -2,6 +2,8 @@ import React from 'react'
 
 import './characters.scss'
 
+import Arrows from './Arrows'
+
 export default function Characters(props) {
 
   const getCharacterEpisodes = (character) => {
@@ -59,13 +61,18 @@ export default function Characters(props) {
             <div className="characters__inner">
                 <h2 className="characters__title">Characters</h2>
                 <div className="characters__selectors">
-                    <ul onClick={handlerSelectorClick} className="characters__selectors-list">
-                        <li className="characters__selectors-btn active" data-type="All">All</li>
-                        <li className="characters__selectors-btn" data-type="Alive">Alive</li>
-                        <li className="characters__selectors-btn" data-type="Dead">Dead</li>
-                        <li className="characters__selectors-btn" data-type="unknown">Unknown</li>
-                    </ul>
+                  <ul onClick={handlerSelectorClick} className="characters__selectors-list">
+                      <li className="characters__selectors-btn active" data-type="All">All</li>
+                      <li className="characters__selectors-btn" data-type="Alive">Alive</li>
+                      <li className="characters__selectors-btn" data-type="Dead">Dead</li>
+                      <li className="characters__selectors-btn" data-type="unknown">Unknown</li>
+                  </ul>
                 </div>
+                <Arrows
+                  nextUrl={props.nextUrl}
+                  prevUrl={props.prevUrl}
+                  setUrl={props.setUrl}
+                />
                 {
                   filteredCharactersByStatus.length === 0 && <h1 className="characters__empty-title">No characters have been found...</h1> 
                 }

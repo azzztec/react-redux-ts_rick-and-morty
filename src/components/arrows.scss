@@ -1,0 +1,34 @@
+.arrows {
+    color: #080808;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    
+    &__inner {
+        width: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__icon {
+        cursor: pointer;
+        :hover {
+            color: #838383;
+        }
+
+        :active {
+            color: #575757;
+        }
+
+        &.inactive {
+            color: #838383;
+            cursor: unset;
+
+            :active {
+                color: #838383;
+            }
+        }
+    }
+
+    
+}

@@ -1,8 +1,9 @@
-import { FETCH_CHARACTERS } from '../actionCreators/charactersAction'
+import { FETCH_CHARACTERS, SET_NEXT_URL, SET_PREV_URL } from '../actionCreators/charactersAction'
 
 const initialState = {
   charactersList: [],
-  filteredCharactersList: []
+  nextUrl: '',
+  prevUrl: ''
 }
 
 export function charactersReducer(state = initialState, action) {
@@ -11,6 +12,16 @@ export function charactersReducer(state = initialState, action) {
       return {
         ...state,
         charactersList: action.payload
+    }
+    case SET_NEXT_URL:
+      return {
+        ...state,
+        nextUrl: action.payload
+    }
+    case SET_PREV_URL:
+      return {
+        ...state,
+        prevUrl: action.payload
     }
     default:
         return state
