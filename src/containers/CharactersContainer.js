@@ -1,8 +1,8 @@
 import React from 'react'
-import { setInputValue } from '../store/actionCreators/inputAction'
 import {useEffect} from 'react'
 import { connect } from 'react-redux'
 import { fetchCharacters } from '../store/actionCreators/charactersAction'
+import { selectByStatus } from '../store/actionCreators/characterStatusAction'
 
 import Characters from '../components/Characters'
 
@@ -17,6 +17,8 @@ function CharactersContainer(props) {
     <Characters
       charactersList={props.charactersList}
       inputValue={props.inputValue}
+      characterStatus={props.characterStatus}
+      selectByCharacterStatus={props.selectByCharacterStatus}
     />
   )
 }
@@ -24,13 +26,15 @@ function CharactersContainer(props) {
 const mapStateToProps = store => {
   return {
     inputValue: store.input.inputValue,
-    charactersList: store.characters.charactersList
+    charactersList: store.characters.charactersList,
+    characterStatus: store.selector.characterStatus
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getCharactersList: () => dispatch(fetchCharacters()),
+    selectByCharacterStatus: (CharacterStatus) => dispatch(selectByStatus(CharacterStatus))
   }
 }
 

@@ -1,7 +1,8 @@
 import { FETCH_CHARACTERS } from '../actionCreators/charactersAction'
 
 const initialState = {
-  charactersList: []
+  charactersList: [],
+  filteredCharactersList: []
 }
 
 export function charactersReducer(state = initialState, action) {
@@ -10,7 +11,7 @@ export function charactersReducer(state = initialState, action) {
       return {
         ...state,
         charactersList: action.payload
-      }
+    }
     default:
         return state
   }

@@ -3,12 +3,11 @@ import React from 'react'
 import './characters.scss'
 
 export default function Characters(props) {
+
   const getCharacterEpisodes = (character) => {
     let characterEpisodeLinks = character.episode
-
     // executes episode number which is at the end of the each link
     let characterEpisodes = characterEpisodeLinks.map(link => +/\d+/.exec(link))
-
     return characterEpisodes
   }
 
@@ -22,21 +21,37 @@ export default function Characters(props) {
     let charactersInCurrentEpisode = characterList.filter(character =>{
       return getCharacterEpisodes(character).includes(episode)
     })
-    console.log(charactersInCurrentEpisode)
-
-    // console.log(props.filteredCharactersList)
 
     return charactersInCurrentEpisode
   }
+  
+  const filterCharactersByStatus = (status) => {
+    if(!status || status === 'All') {
+      return filteredCharactersByEpisode
+    }
+    let charactersWithCurrentStatus = filteredCharactersByEpisode.filter(character => {
+      return character.status === status
+    })
 
-  const handleClick = () => {
-    // console.log(props.filteredCharactersList)
-    console.log(filteredCharacters)
-    props.setFilteredCharacters(filteredCharacters)
-
+    return charactersWithCurrentStatus
   }
-  let filteredCharacters = filterCharactersByEpisode(props.inputValue)
-  // console.log(filteredCharacters)
+
+  const handlerSelectorClick = (e) => {
+    let targetSelector = e.target
+    let selectorType = targetSelector.dataset.type
+    if(!selectorType) {
+      return;
+    }
+    let activeSelector = document.querySelector('.characters__selectors-btn.active');
+    
+    activeSelector.classList.remove('active')
+    targetSelector.classList.add('active')
+
+    props.selectByCharacterStatus(selectorType)
+  }
+
+  let filteredCharactersByEpisode = filterCharactersByEpisode(props.inputValue)
+  let filteredCharactersByStatus = filterCharactersByStatus(props.characterStatus)
 
   return (
     <main className="characters">
@@ -44,19 +59,19 @@ export default function Characters(props) {
             <div className="characters__inner">
                 <h2 className="characters__title">Characters</h2>
                 <div className="characters__selectors">
-                    <ul onClick={handleClick} className="characters__selectors-list">
-                        <li className="characters__selectors-btn" data-type="All">All</li>
+                    <ul onClick={handlerSelectorClick} className="characters__selectors-list">
+                        <li className="characters__selectors-btn active" data-type="All">All</li>
                         <li className="characters__selectors-btn" data-type="Alive">Alive</li>
                         <li className="characters__selectors-btn" data-type="Dead">Dead</li>
-                        <li className="characters__selectors-btn" data-type="Unknown">Unknown</li>
+                        <li className="characters__selectors-btn" data-type="unknown">Unknown</li>
                     </ul>
                 </div>
                 {
-                  filteredCharacters.length === 0 && <h1 className="characters__empty-title">No characters have been found...</h1> 
+                  filteredCharactersByStatus.length === 0 && <h1 className="characters__empty-title">No characters have been found...</h1> 
                 }
                 <div className="characters__list">
                   {
-                    filteredCharacters.map(character => {
+                    filteredCharactersByStatus.map(character => {
                       return (
                         <div className="characters__list-item character" key={character.id}>
                           <div className="character__bg">

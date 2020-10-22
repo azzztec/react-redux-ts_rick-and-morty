@@ -1,7 +1,7 @@
 import { SET_INPUT_VALUE } from '../actionCreators/inputAction'
 
 const initialState = {
-  inputValue: '',
+  inputValue: ''
 }
 
 export function inputReducer(state = initialState, action) {
